@@ -1,0 +1,33 @@
+📆 Time Trends
+How do signups vary by month or season across years?
+
+What’s the average time between signup and apply date?
+
+Are there spikes in applications just before opportunity start dates?
+
+🧑‍🎓 Demographics & Participation
+What are the top countries learners come from?
+
+How does gender distribution vary across opportunities?
+
+Are some institutions more active than others in signing up learners?
+
+📚 Opportunity Analysis
+Which opportunities had the most applications?
+
+Which opportunity categories are most popular?
+
+How do application outcomes (status_description) differ by opportunity?
+
+⏳ Status Funnel
+How many learners dropped off at each status stage (e.g., 'Started' → 'Team Allocated')?
+
+🏫 Academic Interests
+What are the most common current/intended majors?
+
+Do majors vary by country or gender?
+
+📊 Completion Metrics
+What percentage of applicants reach each final status code?
+
+Is there a relationship between signup timing and final status?
