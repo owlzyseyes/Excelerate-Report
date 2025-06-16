@@ -13,8 +13,7 @@ colnames(data)
 
 # EDA Questions 🤔💭--------------------------------------------------------
 
-# Q1: How does the number of signups compare over the years?
-
+# Q1: How does the number of signups compare between 2023 and 2024?
 signups_by_year <- data |> 
   mutate(
     learner_sign_up_date_time = parse_date_time(learner_sign_up_date_time, orders = c("mdy", "dmy", "ymd"))
@@ -24,21 +23,18 @@ signups_by_year <- data |>
   group_by(signup_year) |> 
   summarize(signups = n())
 
-differences <- data |> 
-  mutate(
-    learner_sign_up_date_time = parse_date_time(learner_sign_up_date_time, orders = c("mdy", "dmy", "ymd"))
-  ) |> 
-  mutate(signup_year = year(learner_sign_up_date_time)) |> 
-  filter(signup_year >= 2015 & signup_year <= year(Sys.Date())) |>  # Filter out future/malformed years
-  group_by(opportunity_name, signup_year) |> 
-  summarize(signups = n(), .groups = "drop") |> 
+differences <- data |>
+  mutate(apply_year = year(apply_date)) |> 
+  filter(apply_year %in% c(2023, 2024)) |> 
+  group_by(opportunity_name, apply_year) |> 
+  summarize(applications = n(), .groups = "drop") |> 
   pivot_wider(
-    names_from = signup_year,
-    values_from = signups,
-    names_prefix = "signups_",
+    names_from = apply_year,
+    values_from = applications,
+    names_prefix = "applications_",
     values_fill = 0
   ) |> 
-  mutate(difference = signups_2024 - signups_2023) |> 
+  mutate(difference = applications_2024 - applications_2023) |> 
   arrange(desc(difference))
 
 # Q: What are the top countries learners come from?
@@ -89,56 +85,6 @@ rejection_augmented <- rejection_rates |>
 
 # Q: Is there a correlation between signups and rejection rates in general?
 cor(rejection_augmented$total_applicants, rejection_augmented$rejection_rate)
-# Stratifying by opportunity category
-rejection_augmented <- rejection_augmented |>
-  left_join(
-    opportunity_durations |> select(opportunity_name, opportunity_category),
-    by = "opportunity_name"
-  )
-
-rejection_augmented|> 
-  filter(opportunity_category == "Internship") |>
-  summarize(
-    correlation = cor(total_applicants, rejection_rate),
-    .groups = "drop"
-  )
-
-# Closer look into internships with extreme rejection rates
-extreme_internship_rejections <- rejection_augmented |>
-  filter(
-    opportunity_category == "Internship",
-    rejection_rate < 0.5 | rejection_rate > 0.8
-  ) |>
-  left_join(
-    opportunity_durations |> select(opportunity_name, duration_days, start_year),
-    by = "opportunity_name"
-  ) |>
-  select(
-    opportunity_name,
-    total_applicants,
-    rejected_count,
-    rejection_rate,
-    rejection_rate_Female,
-    rejection_rate_Male,
-    duration_days,
-    start_year
-  )
-# Note: Internships in Health Care Management have the lowest rejection rates (42%)
-# while those in Business Consulting are outstandingly difficult to secure, at 82%.
-
-ggplot(rejection_augmented, aes(x = total_applicants, y = rejection_rate, color = opportunity_category)) +
-  geom_point(size = 3, alpha = 0.8) +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(
-    title = "Rejection Rate vs Signups by Opportunity Category",
-    x = "Total Applicants",
-    y = "Rejection Rate",
-    color = "Category"
-  ) +
-  theme_minimal()
-
-
-
 
 # Q: How long do opportunities typically last? Have the durations changed between the two years?
 opportunity_durations <- data |>
@@ -153,6 +99,60 @@ opportunity_durations <- data |>
   # Filter out extremely long durations
   filter(duration_days <= 150) |> 
   mutate(duration_days = if_else(duration_days == 0, 2.5/24, duration_days))
+
+# Stratifying by opportunity category
+rejection_augmented <- rejection_augmented |>
+  left_join(
+    opportunity_durations |> select(opportunity_name, opportunity_category),
+    by = "opportunity_name"
+  )
+
+rejection_augmented|> 
+  filter(opportunity_category == "Internship") |>
+  summarize(
+    correlation = cor(total_applicants, rejection_rate),
+    .groups = "drop"
+  )
+
+
+opportunity_durations_unique <- opportunity_durations |>
+  distinct(opportunity_name, .keep_all = TRUE)
+
+
+# Closer look into internships with extreme rejection rates
+extreme_internship_rejections <- rejection_augmented |>
+  filter(
+    opportunity_category == "Internship",
+    rejection_rate < 0.5 | rejection_rate > 0.8
+  ) |>
+  left_join(
+    opportunity_durations_unique |> select(opportunity_name, duration_days, start_year),
+    by = "opportunity_name"
+  ) |>
+  select(
+    opportunity_name,
+    total_applicants,
+    rejected_count,
+    rejection_rate,
+    rejection_rate_Female,
+    rejection_rate_Male,
+    duration_days,
+    start_year
+  )
+
+# Note: Internships in Health Care Management have the lowest rejection rates (42%)
+# while those in Business Consulting are outstandingly difficult to secure, at 82%.
+
+ggplot(rejection_augmented, aes(x = total_applicants, y = rejection_rate, color = opportunity_category)) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Rejection Rate vs Signups by Opportunity Category",
+    x = "Total Applicants",
+    y = "Rejection Rate",
+    color = "Category"
+  ) +
+  theme_minimal()
 
 summary(opportunity_durations$duration_days)
 
