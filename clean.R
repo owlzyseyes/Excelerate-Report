@@ -1,3 +1,7 @@
+library(tidyverse)
+library(readr)
+library(janitor)
+
 # Loading the data, minor data prep --------------------
 # Cleaning was done Google Sheets prior
 data <- readr::read_csv("data/opportunities_sheets.csv")
