@@ -87,6 +87,22 @@ rejection_augmented <- rejection_rates |>
   arrange(desc(rejection_rate))
 
 # Q: How long do opportunities typically last? Have the durations changed between the two years?
+opportunity_durations <- data |> 
+  select(opportunity_name, opportunity_category, opportunity_start_date, opportunity_end_date) |> 
+  distinct() |> 
+  mutate(
+    opportunity_start_date = as_date(opportunity_start_date),
+    opportunity_end_date   = as_date(opportunity_end_date),
+    duration_days          = as.numeric(opportunity_end_date - opportunity_start_date),
+    start_year             = year(opportunity_start_date)
+  )
+
+
+
+
+
+
+
 # Q: Is there a correlation between signups and rejection rates for opportunities?
 # Q: Which country's learners are more likely to secure opportunities? Has this changed
 # between the two years? Which country's learners are the most competitive (Competition
