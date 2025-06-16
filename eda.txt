@@ -29,5 +29,3 @@ Do majors vary by country or gender?
 
 📊 Completion Metrics
 What percentage of applicants reach each final status code?
-
-Is there a relationship between signup timing and final status?

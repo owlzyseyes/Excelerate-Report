@@ -5,6 +5,7 @@ library(janitor)
 # Notes: 
 # 22 Opportunities of 4 types are offered in this program.
 # Either Course, Competition, Internship, Event or Engagement.
+# Events, specifically Mastery Workshops, go for 2h 30min. 
 
 # Load the clean stuff.
 data <- readr::read_csv("data/cleaned_opportunities.csv")
@@ -86,24 +87,75 @@ rejection_augmented <- rejection_rates |>
   left_join(gender_rejection_wide, by = "opportunity_name") |> 
   arrange(desc(rejection_rate))
 
-# Q: How long do opportunities typically last? Have the durations changed between the two years?
-opportunity_durations <- data |> 
-  select(opportunity_name, opportunity_category, opportunity_start_date, opportunity_end_date) |> 
-  distinct() |> 
-  mutate(
-    opportunity_start_date = as_date(opportunity_start_date),
-    opportunity_end_date   = as_date(opportunity_end_date),
-    duration_days          = as.numeric(opportunity_end_date - opportunity_start_date),
-    start_year             = year(opportunity_start_date)
+# Q: Is there a correlation between signups and rejection rates in general?
+cor(rejection_augmented$total_applicants, rejection_augmented$rejection_rate)
+# Stratifying by opportunity category
+rejection_augmented <- rejection_augmented |>
+  left_join(
+    opportunity_durations |> select(opportunity_name, opportunity_category),
+    by = "opportunity_name"
   )
 
+rejection_augmented|> 
+  filter(opportunity_category == "Internship") |>
+  summarize(
+    correlation = cor(total_applicants, rejection_rate),
+    .groups = "drop"
+  )
+
+# Closer look into internships with extreme rejection rates
+extreme_internship_rejections <- rejection_augmented |>
+  filter(
+    opportunity_category == "Internship",
+    rejection_rate < 0.5 | rejection_rate > 0.8
+  ) |>
+  left_join(
+    opportunity_durations |> select(opportunity_name, duration_days, start_year),
+    by = "opportunity_name"
+  ) |>
+  select(
+    opportunity_name,
+    total_applicants,
+    rejected_count,
+    rejection_rate,
+    rejection_rate_Female,
+    rejection_rate_Male,
+    duration_days,
+    start_year
+  )
+# Note: Internships in Health Care Management have the lowest rejection rates (42%)
+# while those in Business Consulting are outstandingly difficult to secure, at 82%.
+
+ggplot(rejection_augmented, aes(x = total_applicants, y = rejection_rate, color = opportunity_category)) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Rejection Rate vs Signups by Opportunity Category",
+    x = "Total Applicants",
+    y = "Rejection Rate",
+    color = "Category"
+  ) +
+  theme_minimal()
 
 
 
 
+# Q: How long do opportunities typically last? Have the durations changed between the two years?
+opportunity_durations <- data |>
+  select(opportunity_name, opportunity_category, opportunity_start_date, opportunity_end_date) |>
+  distinct() |>
+  mutate(
+    opportunity_start_date = as_date(parse_date_time(opportunity_start_date, orders = c("mdy HMS", "mdy HM", "mdy"))),
+    opportunity_end_date   = as_date(parse_date_time(opportunity_end_date, orders = c("mdy HMS", "mdy HM", "mdy"))),
+    duration_days          = abs(as.numeric(opportunity_end_date - opportunity_start_date)),
+    start_year             = year(opportunity_start_date)
+  ) |> 
+  # Filter out extremely long durations
+  filter(duration_days <= 150) |> 
+  mutate(duration_days = if_else(duration_days == 0, 2.5/24, duration_days))
 
+summary(opportunity_durations$duration_days)
 
-# Q: Is there a correlation between signups and rejection rates for opportunities?
 # Q: Which country's learners are more likely to secure opportunities? Has this changed
 # between the two years? Which country's learners are the most competitive (Competition
-# opportunties)? How about internships? 
+# opportunties)? Which country's learners are more likey to secure internships? 
