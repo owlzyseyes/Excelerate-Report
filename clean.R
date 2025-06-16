@@ -33,8 +33,21 @@ bad_rows <- is.na(data$apply_date)
 
 # Step 4: View the original (raw) values that failed
 raw_dates[bad_rows]
-# Fix manually for the bad rows
+# Fix the bad rows
 data$apply_date[bad_rows] <- dmy(raw_dates[bad_rows])
+
+# Identify rows with invalid years (2146-2149)
+bad_years <- !(year(data$apply_date) %in% c(2022, 2023, 2024))
+
+# Loop through bad rows and replace year with year from the row above
+for (i in which(bad_years)) {
+  if (i > 1 && !is.na(data$apply_date[i - 1])) {
+    # Replace just the year, preserving month and day
+    fixed_date <- update(data$apply_date[i], year = year(data$apply_date[i - 1]))
+    data$apply_date[i] <- fixed_date
+  }
+}
+
 
 
 # Standardize gender capitalization
