@@ -23,6 +23,7 @@ signups_by_year <- data |>
   group_by(signup_year) |> 
   summarize(signups = n())
 
+# Q2: How do applications compare for the last two years?
 differences <- data |>
   mutate(apply_year = year(apply_date)) |> 
   filter(apply_year %in% c(2023, 2024)) |> 
@@ -157,5 +158,53 @@ ggplot(rejection_augmented, aes(x = total_applicants, y = rejection_rate, color 
 summary(opportunity_durations$duration_days)
 
 # Q: Which country's learners are more likely to secure opportunities? Has this changed
-# between the two years? Which country's learners are the most competitive (Competition
-# opportunties)? Which country's learners are more likey to secure internships? 
+# between the two years? 
+secure_statuses <- c("Started", "Team Allocated", "Rewards Award")
+
+country_success <- data |>
+  group_by(country) |>
+  summarize(
+    total_applications = n(),
+    successful = sum(status_description %in% secure_statuses),
+    success_rate = successful / total_applications,
+    .groups = "drop"
+  ) |>
+  arrange(desc(success_rate)) |> 
+  filter(total_applications >= 20)
+
+
+# Which country's learners are more likey to secure internships?
+success_statuses <- c("Started", "Team Allocated")
+
+country_internship_success <- data |> 
+  filter(opportunity_category == "Internship") |>
+  group_by(country) |> 
+  summarize(
+    total_applications = n(),
+    successful = sum(status_description %in% success_statuses),
+    success_rate = successful / total_applications
+  ) |>
+  filter(total_applications >= 10) |>  # Filter noisy countries
+  arrange(desc(success_rate))
+
+country_success_by_year <- data |>
+  filter(opportunity_category == "Internship") |>
+  mutate(apply_year = year(apply_date)) |>
+  group_by(country, apply_year) |>
+  summarize(
+    total_applications = n(),
+    successful = sum(status_description %in% success_statuses),
+    success_rate = successful / total_applications,
+    .groups = "drop"
+  )
+
+# Which country's learners are the most competitive (Competition
+# opportunties)?  
+
+compete <- data |> 
+  filter(opportunity_category == "Competition",
+  status_description %in% c("Team Allocated", "Applied")) |>
+  group_by(country) |> 
+  summarize(total_applications = n(), .groups = "drop") |> 
+  arrange(desc(total_applications))
+
