@@ -94,4 +94,4 @@ ggplot() +
   ) +
   facet_wrap(~increasing, nrow = 1, scales = "free_y", labeller = as_labeller(c(`TRUE` = "", `FALSE` = "")))
 
-ggsave("test.png", height = 12, width = 20)
+ggsave("plot.png", height = 12, width = 20)
