@@ -1,4 +1,5 @@
 library(tidyverse)
+library(lubridate)
 library(readr)
 library(janitor)
 
@@ -12,7 +13,7 @@ data <- data |>
 
 
 # Convert character dates to proper datetime formats
-data <- data %>%
+data <- data |> 
    # Forward fill missing opportunity_start_date values
    tidyr::fill(opportunity_start_date, .direction = "down") |> 
    dplyr::mutate(institution_name = if_else(is.na(institution_name), "Unknown", institution_name,
@@ -47,6 +48,22 @@ for (i in which(bad_years)) {
     data$apply_date[i] <- fixed_date
   }
 }
+
+# Apply same procedure to the Learner Sign Up column 
+data <- data |> 
+   mutate(learner_sign_up_date_time = mdy(learner_sign_up_date_time))
+
+bad_years_1<- !(year(data$learner_sign_up_date_time) %in% c(2023, 2024))
+for (j in which(bad_years_1)) {
+  if (j > 1 && !is.na(data$learner_sign_up_date_time[j - 1])) {
+    # Replace just the year, preserving month and day
+    fixed_date_1 <- update(data$learner_sign_up_date_time[j],
+       year = year(data$learner_sign_up_date_time[j - 1]))
+    data$learner_sign_up_date_time[j] <- fixed_date_1
+  }
+}
+
+
 
 
 
