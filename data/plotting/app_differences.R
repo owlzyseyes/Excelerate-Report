@@ -5,8 +5,6 @@ library(glue)
 library(showtext)
 library(patchwork)
 
-# Example input: differences dataframe
-# differences has: opportunity_name, applications_2023, applications_2024, difference
 
 # Add fonts
 font_add_google("Poppins", "pop", regular.wt = 200)
@@ -58,8 +56,8 @@ df <- df |> mutate(opportunity_name = fct_relabel(opportunity_name, ~ str_wrap(.
 
 
 caption <- make_caption(c(txt, sunset[c(2, 5)]), bg)
-
-subtitle <- "The Excelerate program has continued to attract increasing learner engagement, with more signups and opportunity applications in 2024 compared to 2023. While some opportunities saw steady interest, others experienced sharp increases in applications, highlighting shifting learner priorities and program visibility."
+scale_x <- seq(0, 1200, 200)
+subtitle <- "The Excelerate program saw both rising and falling learner interest in different opportunities between 2023 and 2024. While some opportunities gained more applications, others saw decreased engagement—revealing changing learner priorities and program dynamics."
 title <- "Excelerate Program: Shifts in Opportunity Applications"
 
 
@@ -68,10 +66,8 @@ df |>
 ggplot() +
   geom_segment(aes(x = applications_2023, xend = applications_2024, y = fct_reorder(opportunity_name, difference), yend = opportunity_name),
                colour = "gray70", linewidth = 1.5) +
-  geom_point(aes(x = applications_2023, y = opportunity_name),
-             colour = sunset[2], size = 5) +
-  geom_point(aes(x = applications_2024, y = opportunity_name),
-             colour = sunset[5], size = 5) +
+  geom_point(aes(x = applications_2023, y = opportunity_name, color = "2023"), size = 5) +
+  geom_point(aes(x = applications_2024, y = opportunity_name, color = "2024"), size = 5) +
   geom_text(aes(x, y, label = text), df_text, family = ft, size = 33, hjust = 0, vjust = 1, lineheight = 0.25, fontface = "bold", colour = pal) +
   scale_x_continuous(breaks = scale_x, labels = scale_x) +
   scale_colour_manual(values = sunset[c(2, 5)]) +
@@ -93,10 +89,9 @@ ggplot() +
     legend.position = "top",
     axis.text = element_text(hjust = 1, margin = margin(r = 5)),
     axis.text.x = element_text(hjust = 1, margin = margin(t = 10, b = 10)),
-    # axis.text.y = element_text(hjust = 1, margin = margin(r = 10), colour = txt, size = 38),
     axis.title.x = element_text(face = "bold"),
     panel.grid.major.y = element_line(linewidth = 0.5, linetype = 3, colour = line)
   ) +
-  facet_wrap(~increasing, nrow = 1, scales = "free_y")
+  facet_wrap(~increasing, nrow = 1, scales = "free_y", labeller = as_labeller(c(`TRUE` = "", `FALSE` = "")))
 
 ggsave("test.png", height = 12, width = 20)
