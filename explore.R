@@ -19,7 +19,6 @@ signups_by_year <- data |>
     learner_sign_up_date_time = parse_date_time(learner_sign_up_date_time, orders = c("mdy", "dmy", "ymd"))
   ) |> 
   mutate(signup_year = year(learner_sign_up_date_time)) |> 
-  filter(signup_year >= 2015 & signup_year <= year(Sys.Date())) |>  # Filter out future/malformed years
   group_by(signup_year) |> 
   summarize(signups = n())
 
@@ -37,6 +36,16 @@ differences <- data |>
   ) |> 
   mutate(difference = applications_2024 - applications_2023) |> 
   arrange(desc(difference))
+
+readr::write_csv(differences, "data/plotting/app_differences.csv")
+
+# Total Applications by year
+totals <- differences |> 
+  summarize(
+    total_2023 = sum(applications_2023, na.rm = TRUE),
+    total_2024 = sum(applications_2024, na.rm = TRUE)
+  )
+totals
 
 # Q: What are the top countries learners come from?
 top_countries <- data |> 
