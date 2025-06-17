@@ -84,10 +84,10 @@ rejection_augmented <- rejection_rates |>
   left_join(gender_rejection_wide, by = "opportunity_name") |> 
   arrange(desc(rejection_rate))
 
-# Q: Is there a correlation between signups and rejection rates in general?
+# Q: Is there a correlation between applications and rejection rates in general?
 cor(rejection_augmented$total_applicants, rejection_augmented$rejection_rate)
 
-# Q: How long do opportunities typically last? Have the durations changed between the two years?
+# Q: How long do opportunities typically last?
 opportunity_durations <- data |>
   select(opportunity_name, opportunity_category, opportunity_start_date, opportunity_end_date) |>
   distinct() |>

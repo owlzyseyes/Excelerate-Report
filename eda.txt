@@ -1,31 +1,14 @@
-📆 Time Trends
-How do signups vary by month or season across years?
+## Exploratory Data Analysis Questions
 
-What’s the average time between signup and apply date?
-
-Are there spikes in applications just before opportunity start dates?
-
-🧑‍🎓 Demographics & Participation
-What are the top countries learners come from?
-
-How does gender distribution vary across opportunities?
-
-Are some institutions more active than others in signing up learners?
-
-📚 Opportunity Analysis
-Which opportunities had the most applications?
-
-Which opportunity categories are most popular?
-
-How do application outcomes (status_description) differ by opportunity?
-
-⏳ Status Funnel
-How many learners dropped off at each status stage (e.g., 'Started' → 'Team Allocated')?
-
-🏫 Academic Interests
-What are the most common current/intended majors?
-
-Do majors vary by country or gender?
-
-📊 Completion Metrics
-What percentage of applicants reach each final status code?
+Q1: How does the number of signups compare between 2023 and 2024?
+Q2: How do applications compare for the last two years?
+Q3: What are the top countries learners come from?
+Q4: How does gender distribution vary across opportunities?
+Q5: Which opportunities have higher rejection rates than others?
+    Does this vary by gender?
+Q6: How long do opportunities typically last?
+Q7: Which country's learners are more likely to secure opportunities? Has this changed
+    between the two years? 
+Q8: Which country's learners are more likey to secure internships?
+Q9: Which country's learners are the most competitive (Competition
+    opportunties)?  
