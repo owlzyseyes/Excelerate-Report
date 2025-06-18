@@ -1,6 +1,5 @@
 library(tidyverse)
 library(readr)
-library(janitor)
 
 # Notes: 
 # 22 Opportunities of 4 types are offered in this program.
@@ -48,8 +47,19 @@ totals <- differences |>
 totals
 
 # Q: What are the top countries learners come from?
-top_countries <- data |> 
-  count(country, sort = TRUE)
+top_countries <- data |>
+  filter(!is.na(learner_sign_up_date_time)) |>
+  count(country, name = "signups", sort = TRUE) |>
+  mutate(percent = signups / sum(signups)) |> 
+  mutate(country = ifelse(percent < 0.01, "Others", country)) |>  # Less than 1%
+  group_by(country) |> 
+  summarise(
+    signups = sum(signups),
+    percent = sum(percent)
+  ) |> 
+  arrange(desc(signups))
+
+readr::write_csv(top_countries, file = "data/plotting/learners_country.csv")
 
 # Q: How does gender distribution vary across opportunities?
 gender_by_opportunity <- data |> 
