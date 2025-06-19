@@ -210,6 +210,18 @@ country_internship_success <- data |>
   filter(total_applications >= 10) |>  # Filter noisy countries
   arrange(desc(success_rate))
 
+# Export data for plotting
+country_intern <- country_internship_success |>
+  rename(
+    `Country` = country,
+    `Total Applications` = total_applications,
+    `Succesful Applications` = successful,
+    `Success Rate (%)` = success_rate
+  ) |>
+  mutate(`Success Rate (%)` = round(`Success Rate (%)` * 100, 1)) |>
+  readr::write_csv("data/plotting/country_internship.csv")
+  
+
 country_success_by_year <- data |>
   filter(opportunity_category == "Internship") |>
   mutate(apply_year = year(apply_date)) |>
