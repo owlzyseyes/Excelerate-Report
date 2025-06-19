@@ -81,6 +81,10 @@ rejection_rates <- data |>
   ) |> 
   arrange(desc(rejection_rate))
 
+rejection_rate_data <- rejection_rates |> filter(rejection_rate > 0)
+# Save it for plotting
+readr::write_csv(rejection_rate_data, file = "data/plotting/rejection_rates.csv")
+
 gender_rejection_wide <- data |> 
   mutate(gender = str_to_title(gender)) |> 
   filter(gender %in% c("Male", "Female")) |> # Filtered because result produces lots of missing values
