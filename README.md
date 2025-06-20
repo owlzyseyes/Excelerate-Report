@@ -154,5 +154,4 @@ The comprehensive data cleaning process was crucial for ensuring accurate tempor
 
 **🔗 Quick Links:**
 - **[📊 Full PDF Report](./report/report.pdf)**
-- **[🌐 Interactive HTML Report](./report/report.html)**
 - **[📈 Data Visualizations](./report/images/)**
