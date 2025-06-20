@@ -1,6 +1,15 @@
 ---
 title: "Excelerate Program Analysis: A Two-Year Comparative Study of Global Learner Engagement and Outcomes (2023-2024)"
-author: "Brian Mubia"
+author:
+  name: "Brian Mubia"
+  url: https://github.com/owlzyseyes
+  social:
+    - icon: github
+      url: https://github.com/owlzyseyes
+    - icon: linkedin
+      url: https://linkedin.com/in/brian1001
+    - icon: bluesky
+      url: https://hootist.bsky.social
 format:
   html:
     code-fold: true
@@ -8,10 +17,23 @@ format:
     fig-height: 6
     theme: journal
     respect-user-color-scheme: true
+    code-visible: false
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+    fig-width: 8
+    fig-height: 6
+    colorlinks: true
+    fontsize: 13pt
+    include-in-header: 
+      text: |
+        \usepackage{hyperref}
+    keep-tex: false 
 execute:
   echo: false
   warning: false
   message: false
+  include: false
 editor: visual
 toc: false
 number-sections: false
@@ -49,7 +71,7 @@ When it comes to landing internship opportunities, success rates vary significan
 library(knitr)
 library(readr)
 
-data <- readr::read_csv("../data/plotting/country_internship.csv")
+data <- readr::read_csv("../data/plotting/country_internship.csv", show_col_types = FALSE)
 kable(data)
 ```
 
