@@ -1,15 +1,6 @@
 ---
 title: "Excelerate Program Analysis: A Two-Year Comparative Study of Global Learner Engagement and Outcomes (2023-2024)"
-author:
-  name: "Brian Mubia"
-  url: https://github.com/owlzyseyes
-  social:
-    - icon: github
-      url: https://github.com/owlzyseyes
-    - icon: linkedin
-      url: https://linkedin.com/in/brian1001
-    - icon: bluesky
-      url: https://hootist.bsky.social
+author: "Brian Mubia"
 format:
   html:
     code-fold: true

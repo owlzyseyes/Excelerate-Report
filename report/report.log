@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.20)  20 JUN 2025 12:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.20)  20 JUN 2025 15:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -405,7 +405,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
 \BKM@id=\count329
 ))
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 127.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 128.
 (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -414,24 +414,24 @@ File: l3backend-pdftex.def 2025-04-14 L3 backend support: PDF output (pdfTeX)
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 127.
-LaTeX Font Info:    ... okay on input line 127.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
 (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -472,54 +472,54 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 127.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 129.
+Package hyperref Info: Link coloring OFF on input line 128.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 130.
 (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 129.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 130.
 (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 129.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 130.
 (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 129.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 130.
 (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 129.
+(Font)              <12> on input line 130.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 129.
+(Font)              <8> on input line 130.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 129.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 129.
+(Font)              <6> on input line 130.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 130.
 (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 129.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 130.
 (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 <images/plot.png, id=4, 1445.4pt x 867.24pt>
 File: images/plot.png Graphic file (type png)
 <use images/plot.png>
-Package pdftex.def Info: images/plot.png  used on input line 165.
+Package pdftex.def Info: images/plot.png  used on input line 166.
 (pdftex.def)             Requested size: 1445.39648pt x 867.2379pt.
 <images/countries.png, id=6, 1445.4pt x 867.24pt>
 File: images/countries.png Graphic file (type png)
 <use images/countries.png>
-Package pdftex.def Info: images/countries.png  used on input line 181.
+Package pdftex.def Info: images/countries.png  used on input line 182.
 (pdftex.def)             Requested size: 1445.39648pt x 867.2379pt.
 <images/visualization_e-2.png, id=7, 826.5279pt x 1113.1989pt>
 File: images/visualization_e-2.png Graphic file (type png)
 <use images/visualization_e-2.png>
-Package pdftex.def Info: images/visualization_e-2.png  used on input line 202.
+Package pdftex.def Info: images/visualization_e-2.png  used on input line 203.
 (pdftex.def)             Requested size: 826.52588pt x 1113.1962pt.
 
-LaTeX Warning: Float too large for page by 6.2099pt on input line 205.
+LaTeX Warning: Float too large for page by 6.2099pt on input line 206.
 
 
 
@@ -530,12 +530,12 @@ LaTeX Warning: Float too large for page by 6.2099pt on input line 205.
 [2 <./images/plot.png> <./images/countries.png>]
 
 [3 <./images/visualization_e-2.png (PNG copy)>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 215.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 216.
 (c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 216.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 217.
 
 
 [4] (./report.aux)
@@ -547,13 +547,13 @@ L3 programming layer <2025-05-26>
 Here is how much of TeX's memory you used:
  12203 strings out of 469867
  189819 string characters out of 5482749
- 611355 words of memory out of 5000000
+ 611463 words of memory out of 5000000
  40302 multiletter control sequences out of 15000+600000
  655795 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  89i,7n,93p,764b,472s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/owlzy/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on report.pdf (4 pages, 1479384 bytes).
+Output written on report.pdf (4 pages, 1480024 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream
