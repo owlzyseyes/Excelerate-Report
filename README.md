@@ -124,5 +124,3 @@ for (i in which(bad_years)) {
 The analysis reveals important patterns in student engagement with Excelerate opportunities, highlighting the competitive nature of certain programs and geographic diversity of participants. The data cleaning process was crucial for ensuring accurate temporal analysis, particularly given the systematic date errors in the original dataset.
 
 ---
-
-*This analysis supports Saint Louis University's understanding of student engagement with career development opportunities through the Excelerate platform.*
