@@ -16,7 +16,6 @@ This analysis focuses on opportunities provided through the Excelerate platform,
 The complete analysis is available in multiple formats:
 
 ### **📊 [View Full Report (PDF)](./report/report.pdf)**
-### **🌐 [Interactive HTML Version](./report/report.html)**
 
 **Report Title:** *"Excelerate Program Analysis: A Two-Year Comparative Study of Global Learner Engagement and Outcomes (2023-2024)"*
 
